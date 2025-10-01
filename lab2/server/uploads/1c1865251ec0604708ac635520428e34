@@ -1,0 +1,62 @@
+<h2>Список задач</h2>
+
+<% if (tasks.length === 0) { %>
+  <p>Задач пока нет.</p>
+<% } else { %>
+  <form class="filter-form" method="GET" action="/tasks">
+    <label>
+      Фильтр по статусу:
+      <select name="status" onchange="this.form.submit()">
+        <option value="">Все</option>
+        <option value="todo" <%= status === 'todo' ? 'selected' : '' %>>Надо сделать</option>
+        <option value="current" <%= status === 'current' ? 'selected' : '' %>>В процессе</option>
+        <option value="done" <%= status === 'done' ? 'selected' : '' %>>Готово</option>
+      </select>
+    </label>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Название</th>
+        <th>Статус</th>
+        <th>Срок</th>
+        <th>Действия</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% tasks.forEach(task => { %>
+      <tr>
+        <td><%= task.title %></td>
+        <td>
+          <span class="status <%= task.status %>">
+            <%= task.status === 'todo' ? 'Надо сделать' : task.status === 'current' ? 'В процессе' : 'Готово' %>
+          </span>
+        </td>
+        <td><%= task.due_date || '-' %></td>
+        <td>
+          <% if (task.attachments && task.attachments.length > 0) { %>
+            <div class="attachment-list">
+              <% task.attachments.forEach(att => { %>
+                <a href="/tasks/<%= task.id %>/attachments/<%= att.id %>" target="_blank">
+                  📎 <%= att.original_name %>
+                </a>
+              <% }) %>
+            </div>
+          <% } %>
+        </td>
+        <td>
+          <a class="btn" href="/tasks/<%= task.id %>/edit">Редактировать</a>
+          <form
+            action="/tasks/<%= task.id %>?_method=DELETE"
+            method="POST"
+            style="display: inline"
+          >
+            <button type="submit">Удалить</button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+<% } %>

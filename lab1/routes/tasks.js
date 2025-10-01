@@ -7,9 +7,7 @@ const db = require("../db/db");
 const router = express.Router();
 const upload = multer({ dest: "uploads/" });
 
-// ====================
 // Список задач + фильтр по статусу
-// ====================
 router.get("/", async (req, res) => {
   const status = req.query.status || null;
   const tasks = await db.getTasks({ status });
@@ -22,16 +20,12 @@ router.get("/", async (req, res) => {
   res.render("tasks/index", { tasks, status });
 });
 
-// ====================
 // Форма создания задачи
-// ====================
 router.get("/new", (req, res) => {
   res.render("tasks/new");
 });
 
-// ====================
 // Создание задачи + вложения
-// ====================
 router.post("/", upload.array("attachments"), async (req, res) => {
   const { title, description, status, due_date } = req.body;
   const result = await db.createTask({ title, description, status, due_date });
@@ -50,9 +44,7 @@ router.post("/", upload.array("attachments"), async (req, res) => {
   res.redirect("/tasks");
 });
 
-// ====================
 // Форма редактирования
-// ====================
 router.get("/:id/edit", async (req, res) => {
   try {
     const task = await db.getTaskById(req.params.id); // подтягиваем задачу
@@ -63,20 +55,16 @@ router.get("/:id/edit", async (req, res) => {
 
     res.render("tasks/edit", { task });
   } catch (err) {
-    console.error(err);
     res.status(500).send("Server error");
   }
 });
 
-// ====================
 // Обновление задачи
-// ====================
 router.put("/:id", upload.array("attachments"), async (req, res) => {
   const { title, description, status, due_date } = req.body;
   await db.updateTask(req.params.id, { title, description, status, due_date });
 
   // сохраняем новые вложения
-  console.log(req.files);
   if (req.files && req.files.length) {
     for (const f of req.files) {
       await db.addAttachment(req.params.id, {
@@ -90,17 +78,13 @@ router.put("/:id", upload.array("attachments"), async (req, res) => {
   res.redirect(`/tasks/${req.params.id}/edit`);
 });
 
-// ====================
 // Удаление задачи
-// ====================
 router.delete("/:id", async (req, res) => {
   await db.deleteTask(req.params.id);
   res.redirect("/tasks");
 });
 
-// ====================
 // Скачивание вложения
-// ====================
 router.get("/:id/attachments/:aid", async (req, res) => {
   const { id, aid } = req.params;
   const attachment = await db.getAttachmentById(aid);
@@ -117,9 +101,7 @@ router.get("/:id/attachments/:aid", async (req, res) => {
   res.download(filePath, attachment.original_name);
 });
 
-// ====================
 // Удаление вложения
-// ====================
 router.delete("/:id/attachments/:aid", async (req, res) => {
   const { id, aid } = req.params;
   const attachment = await db.getAttachmentById(aid);
