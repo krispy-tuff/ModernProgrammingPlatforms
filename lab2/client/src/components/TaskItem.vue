@@ -8,9 +8,9 @@
       <li v-for="att in task.attachments" :key="att.id">
         <a
           :href="`http://localhost:3000/api/tasks/${task.id}/attachments/${att.id}`"
-          target="_blank"
+          :download="att.original_name"
         >
-          {{ att.filename }}
+          {{ att.original_name }}
         </a>
         <button @click="deleteAttachment(att)">❌</button>
       </li>

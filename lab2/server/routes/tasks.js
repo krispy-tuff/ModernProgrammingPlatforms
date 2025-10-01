@@ -21,7 +21,10 @@ const upload = multer({ storage });
 // Получить все задачи
 router.get("/", async (req, res) => {
   try {
-    const tasks = await db.getAllTasks();
+    const tasks = await db.getTasks();
+    for (const task of tasks) {
+      task.attachments = await db.getAttachmentsByTask(task.id);
+    }
     res.json(tasks);
   } catch (err) {
     res.status(500).json({ error: "Ошибка при получении задач" });
@@ -44,30 +47,20 @@ router.get("/:id", async (req, res) => {
 // Создать задачу
 router.post("/", async (req, res) => {
   try {
-    const { title, description, status, due_date } = req.body;
-    const newTask = await db.createTask(
-      title,
-      description,
-      status || "todo",
-      due_date
-    );
+    const newTask = await db.createTask(req.body);
     res.status(201).json(newTask);
   } catch (err) {
-    res.status(500).json({ error: "Ошибка при создании задачи" });
+    res
+      .status(500)
+      .json({ error: "Ошибка при создании задачи", message: err.message });
   }
 });
 
 // Обновить задачу
 router.put("/:id", async (req, res) => {
   try {
-    const { title, description, status, due_date } = req.body;
-    const updatedTask = await db.updateTask(
-      req.params.id,
-      title,
-      description,
-      status,
-      due_date
-    );
+    due_date = "2025-10-01";
+    const updatedTask = await db.updateTask(req.params.id, req.body);
     if (!updatedTask)
       return res.status(404).json({ error: "Задача не найдена" });
 
@@ -98,8 +91,12 @@ router.post("/:id/attachments", upload.array("file"), async (req, res) => {
     if (!task) return res.status(404).json({ error: "Задача не найдена" });
 
     const attachments = [];
-    for (const file of req.files) {
-      const att = await db.addAttachment(taskId, file.filename);
+    for (const f of req.files) {
+      const att = await db.addAttachment(req.params.id, {
+        filename: f.filename,
+        original_name: f.originalname,
+        content_type: f.mimetype,
+      });
       attachments.push(att);
     }
 

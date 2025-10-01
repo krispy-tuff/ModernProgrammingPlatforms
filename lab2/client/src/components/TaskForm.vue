@@ -27,7 +27,7 @@
       </div>
       <button type="button" @click="fileInput.click()">Выбрать файлы</button>
 
-      <ul class="attachments" v-if="combinedAttachments.length">
+      <ul class="attachments" v-if="combinedAttachments.length && flag">
         <li v-for="f in combinedAttachments" :key="f.id || f.name">
           <span>{{ f.original_name || f.name }}</span>
           <button type="button" @click="removeFile(f)">❌</button>
@@ -55,6 +55,7 @@ export default {
     const files = ref([]);
     const deletedIds = ref([]);
     const fileInput = ref(null);
+    const flag = fer(true);
 
     const combinedAttachments = computed(() => [
       ...task.attachments.filter((a) => !deletedIds.value.includes(a.id)),
@@ -74,6 +75,8 @@ export default {
     const removeFile = (f) => {
       if (f.id) deletedIds.value.push(f.id);
       else files.value.splice(files.value.indexOf(f), 1);
+      flag.value = false;
+      flag.value = true;
     };
 
     const loadTask = async () => {
@@ -96,7 +99,7 @@ export default {
           description: task.description,
           status: task.status,
         });
-        task.id = taskRes.data.id;
+        task.id = taskRes.data.lastID;
       }
 
       // Удаляем старые файлы
@@ -108,9 +111,13 @@ export default {
       if (files.value.length) {
         const formData = new FormData();
         files.value.forEach((f) => formData.append("file", f));
-        await axios.post(`/tasks/${props.taskId}/attachments`, formData, {
-          headers: { "Content-Type": "multipart/form-data" },
-        });
+        await axios.post(
+          `/tasks/${props.taskId || task.id}/attachments`,
+          formData,
+          {
+            headers: { "Content-Type": "multipart/form-data" },
+          }
+        );
       }
 
       window.location.href = "/"; // Можно потом заменить на router.push
