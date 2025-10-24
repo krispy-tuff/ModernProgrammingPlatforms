@@ -55,7 +55,7 @@ export default {
     const files = ref([]);
     const deletedIds = ref([]);
     const fileInput = ref(null);
-    const flag = fer(true);
+    const flag = ref(true);
 
     const combinedAttachments = computed(() => [
       ...task.attachments.filter((a) => !deletedIds.value.includes(a.id)),

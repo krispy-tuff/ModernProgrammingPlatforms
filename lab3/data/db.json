@@ -1,0 +1,79 @@
+{
+  "tasks": [
+    {
+      "id": "mh4udz9s500stg94wdh",
+      "title": "lab 3 spp",
+      "description": "vse ponyatno",
+      "status": "in_progress",
+      "dueDate": "2025-10-24",
+      "createdAt": "2025-10-24T12:43:35.248Z",
+      "updatedAt": "2025-10-24T12:43:35.248Z",
+      "attachments": [
+        {
+          "id": "mh4udz9s75f4717hq0s",
+          "filename": "1761309815241-527674755.js",
+          "originalName": "server.js",
+          "path": "/uploads/1761309815241-527674755.js",
+          "uploadedAt": "2025-10-24T12:43:35.248Z"
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": 1760603344716,
+      "login": "testuser",
+      "password": "$2b$10$XVJzzUwbJ0Ix6.6HpKIjl.0/K1dXJy/2szEsfR2bkY5cbvhtdbRHO"
+    },
+    {
+      "id": 1760605702874,
+      "login": "testuser-cors",
+      "password": "$2b$10$oxBMypBQGpVJw.RjeJI4XufWblnPOxMf.BtD7uyhzzzixoAEe4Up2"
+    },
+    {
+      "id": 1760605939564,
+      "login": "qwer",
+      "password": "$2b$10$Z2kIYJxcJS7DsieBUHvwH./lGn5cTysmRHKiThbtthk8H3ES5.x/u"
+    },
+    {
+      "id": 1760624543380,
+      "login": "qwerty",
+      "password": "$2b$10$BQWfPWb0YmmV0kxjsSxicOLkkHiWtC/E6Qk1Fue6yaUkBO5HhRmee"
+    },
+    {
+      "id": 1760625009409,
+      "login": "test",
+      "password": "$2b$10$0bk6FzoEtXDhQW5b3yu90e706K/PmbHMTJyE7l6CMaia6r5LZxceq"
+    },
+    {
+      "id": 1760625299320,
+      "login": "asd",
+      "password": "$2b$10$d/fQzrRWtveuii0XcJku7OqB7/6FMV9OSyFB8MmOmePZrdiWvr6ui"
+    },
+    {
+      "id": 1761223386085,
+      "login": "123",
+      "password": "$2b$10$UDGrBw8k4oG1aEsmkbMt8uJuxNhXRi66LUtVeNnXUA0AUDEPawX8O"
+    },
+    {
+      "id": 1761223597544,
+      "login": "2",
+      "password": "$2b$10$xMiEEjULkYXYUoBZuWU1U.6ud2bTx0Pwp8XsSGdsTSvXBufailqe6"
+    },
+    {
+      "id": 1761228770529,
+      "login": "1",
+      "password": "$2b$10$oC6OkJPetzgDqsGqFUKCbe2SVp/CLosZhGauRtmu05IRYKvC9N4k6"
+    },
+    {
+      "id": 1761228965104,
+      "login": "qwe",
+      "password": "$2b$10$A1sQ3lK2ubzuejo1ryFvE.nV1ViWvJupTe/99PKazoK/SnChYgGjG"
+    },
+    {
+      "id": 1761269415942,
+      "login": "krispy",
+      "password": "$2b$10$7eXdKeSaAigzSI5RDBbU8.vF8g511w6LWAWKbg/hdMzXwRDtP9Qg."
+    }
+  ]
+}
