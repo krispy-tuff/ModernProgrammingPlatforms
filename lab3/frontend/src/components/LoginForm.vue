@@ -1,25 +1,32 @@
+<!-- eslint-disable no-unused-vars -->
 <template>
   <div class="login-form-container">
     <form @submit.prevent="handleSubmit" class="login-form">
-      <h2>{{ isLoginMode ? 'Вход' : 'Регистрация' }}</h2>
-      
+      <h2>{{ isLoginMode ? "Вход" : "Регистрация" }}</h2>
+
       <div class="form-group">
         <label for="login">Логин</label>
-        <input type="text" id="login" v-model="username" required>
+        <input type="text" id="login" v-model="username" required />
       </div>
       <div class="form-group">
         <label for="password">Пароль</label>
-        <input type="password" id="password" v-model="password" required>
+        <input type="password" id="password" v-model="password" required />
       </div>
 
       <p v-if="error" class="error-message">{{ error }}</p>
       <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
 
-      <button type="submit">{{ isLoginMode ? 'Войти' : 'Зарегистрироваться' }}</button>
+      <button type="submit">
+        {{ isLoginMode ? "Войти" : "Зарегистрироваться" }}
+      </button>
 
       <p class="toggle-mode">
         <a href="#" @click.prevent="toggleMode">
-          {{ isLoginMode ? 'Нет аккаунта? Зарегистрируйтесь' : 'Уже есть аккаунт? Войдите' }}
+          {{
+            isLoginMode
+              ? "Нет аккаунта? Зарегистрируйтесь"
+              : "Уже есть аккаунт? Войдите"
+          }}
         </a>
       </p>
     </form>
@@ -27,12 +34,12 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
-const emit = defineEmits(['success']);
+const emit = defineEmits(["success"]);
 
-const username = ref('');
-const password = ref('');
+const username = ref("");
+const password = ref("");
 const error = ref(null);
 const successMessage = ref(null);
 const isLoginMode = ref(true);
@@ -55,20 +62,21 @@ const login = async () => {
   error.value = null;
   successMessage.value = null;
   try {
-    const response = await fetch('/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const response = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ login: username.value, password: password.value }),
+      credentials: "include",
     });
 
     if (response.ok) {
-      emit('success');
+      emit("success");
     } else {
       const data = await response.json();
-      error.value = data.message || 'Ошибка входа';
+      error.value = data.message || "Ошибка входа";
     }
   } catch (e) {
-    error.value = 'Не удалось подключиться к серверу';
+    error.value = "Не удалось подключиться к серверу";
   }
 };
 
@@ -76,21 +84,22 @@ const register = async () => {
   error.value = null;
   successMessage.value = null;
   try {
-    const response = await fetch('/api/auth/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const response = await fetch("/api/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ login: username.value, password: password.value }),
     });
 
     if (response.ok) {
-      successMessage.value = 'Регистрация прошла успешно! Теперь вы можете войти.';
+      successMessage.value =
+        "Регистрация прошла успешно! Теперь вы можете войти.";
       isLoginMode.value = true; // Переключаем на форму входа
     } else {
       const data = await response.json();
-      error.value = data.message || 'Ошибка регистрации';
+      error.value = data.message || "Ошибка регистрации";
     }
   } catch (e) {
-    error.value = 'Не удалось подключиться к серверу';
+    error.value = "Не удалось подключиться к серверу";
   }
 };
 </script>
@@ -141,7 +150,9 @@ input {
   background-color: var(--card-bg-color);
   color: var(--text-color);
   font-size: 1rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 input:focus {

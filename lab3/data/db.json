@@ -1,79 +1,106 @@
 {
   "tasks": [
     {
-      "id": "mh4udz9s500stg94wdh",
-      "title": "lab 3 spp",
-      "description": "vse ponyatno",
-      "status": "in_progress",
-      "dueDate": "2025-10-24",
-      "createdAt": "2025-10-24T12:43:35.248Z",
-      "updatedAt": "2025-10-24T12:43:35.248Z",
+      "id": "mhb7nkqwu7dyjmiq1m",
+      "user_id": "1761316090218",
+      "title": "test3",
+      "description": "three",
+      "status": "cancelled",
+      "dueDate": "2025-10-03",
+      "createdAt": "2025-10-28T23:41:35.048Z",
+      "updatedAt": "2025-10-28T23:57:22.859Z",
       "attachments": [
         {
-          "id": "mh4udz9s75f4717hq0s",
-          "filename": "1761309815241-527674755.js",
-          "originalName": "server.js",
-          "path": "/uploads/1761309815241-527674755.js",
-          "uploadedAt": "2025-10-24T12:43:35.248Z"
+          "id": "mhb87w2zr429pkdgtp",
+          "filename": "1761695842845-130734286.docx",
+          "originalName": "ОтчётПОВС2.docx",
+          "path": "/uploads/1761695842845-130734286.docx",
+          "uploadedAt": "2025-10-28T23:57:22.859Z"
+        }
+      ]
+    },
+    {
+      "id": "mhb83qhzr3s6v69wkb9",
+      "user_id": "1761316090218",
+      "title": "test2",
+      "description": "two",
+      "status": "pending",
+      "dueDate": "2025-10-02",
+      "createdAt": "2025-10-28T23:54:08.999Z",
+      "updatedAt": "2025-10-28T23:57:03.676Z",
+      "attachments": [
+        {
+          "id": "mhb87ha4pddqmtxto",
+          "filename": "1761695823672-71849977.vue",
+          "originalName": "App.vue",
+          "path": "/uploads/1761695823672-71849977.vue",
+          "uploadedAt": "2025-10-28T23:57:03.676Z"
+        },
+        {
+          "id": "mhb87ha48c1xjn4u77h",
+          "filename": "1761695823672-192903341.js",
+          "originalName": "main.js",
+          "path": "/uploads/1761695823672-192903341.js",
+          "uploadedAt": "2025-10-28T23:57:03.676Z"
+        }
+      ]
+    },
+    {
+      "id": "mhb848frx3ivmm0nwt",
+      "user_id": "1761269415942",
+      "title": "test1",
+      "description": "one",
+      "status": "in_progress",
+      "dueDate": "2025-10-03",
+      "createdAt": "2025-10-28T23:54:32.247Z",
+      "updatedAt": "2025-10-28T23:56:41.300Z",
+      "attachments": [
+        {
+          "id": "mhb8700kz40runh3x9",
+          "filename": "1761695801292-989334859.py",
+          "originalName": "lab2.py",
+          "path": "/uploads/1761695801292-989334859.py",
+          "uploadedAt": "2025-10-28T23:56:41.300Z"
+        },
+        {
+          "id": "mhb8700kmovgrzzarlc",
+          "filename": "1761695801293-995639372.py",
+          "originalName": "lab3.py",
+          "path": "/uploads/1761695801293-995639372.py",
+          "uploadedAt": "2025-10-28T23:56:41.300Z"
+        }
+      ]
+    },
+    {
+      "id": "mhb8dalxfgeor32vkd6",
+      "user_id": 1761316090218,
+      "title": "4",
+      "description": "four",
+      "status": "completed",
+      "dueDate": "2025-10-02",
+      "createdAt": "2025-10-29T00:01:34.965Z",
+      "updatedAt": "2025-10-29T00:01:34.965Z",
+      "attachments": [
+        {
+          "id": "mhb8dalxzk24fjd99zs",
+          "filename": "1761696094957-231941604.xlsx",
+          "originalName": "nets.xlsx",
+          "path": "/uploads/1761696094957-231941604.xlsx",
+          "uploadedAt": "2025-10-29T00:01:34.965Z"
         }
       ]
     }
   ],
   "users": [
     {
-      "id": 1760603344716,
-      "login": "testuser",
-      "password": "$2b$10$XVJzzUwbJ0Ix6.6HpKIjl.0/K1dXJy/2szEsfR2bkY5cbvhtdbRHO"
-    },
-    {
-      "id": 1760605702874,
-      "login": "testuser-cors",
-      "password": "$2b$10$oxBMypBQGpVJw.RjeJI4XufWblnPOxMf.BtD7uyhzzzixoAEe4Up2"
-    },
-    {
-      "id": 1760605939564,
-      "login": "qwer",
-      "password": "$2b$10$Z2kIYJxcJS7DsieBUHvwH./lGn5cTysmRHKiThbtthk8H3ES5.x/u"
-    },
-    {
-      "id": 1760624543380,
-      "login": "qwerty",
-      "password": "$2b$10$BQWfPWb0YmmV0kxjsSxicOLkkHiWtC/E6Qk1Fue6yaUkBO5HhRmee"
-    },
-    {
-      "id": 1760625009409,
-      "login": "test",
-      "password": "$2b$10$0bk6FzoEtXDhQW5b3yu90e706K/PmbHMTJyE7l6CMaia6r5LZxceq"
-    },
-    {
-      "id": 1760625299320,
-      "login": "asd",
-      "password": "$2b$10$d/fQzrRWtveuii0XcJku7OqB7/6FMV9OSyFB8MmOmePZrdiWvr6ui"
-    },
-    {
-      "id": 1761223386085,
-      "login": "123",
-      "password": "$2b$10$UDGrBw8k4oG1aEsmkbMt8uJuxNhXRi66LUtVeNnXUA0AUDEPawX8O"
-    },
-    {
-      "id": 1761223597544,
-      "login": "2",
-      "password": "$2b$10$xMiEEjULkYXYUoBZuWU1U.6ud2bTx0Pwp8XsSGdsTSvXBufailqe6"
-    },
-    {
-      "id": 1761228770529,
-      "login": "1",
-      "password": "$2b$10$oC6OkJPetzgDqsGqFUKCbe2SVp/CLosZhGauRtmu05IRYKvC9N4k6"
-    },
-    {
-      "id": 1761228965104,
-      "login": "qwe",
-      "password": "$2b$10$A1sQ3lK2ubzuejo1ryFvE.nV1ViWvJupTe/99PKazoK/SnChYgGjG"
-    },
-    {
       "id": 1761269415942,
       "login": "krispy",
       "password": "$2b$10$7eXdKeSaAigzSI5RDBbU8.vF8g511w6LWAWKbg/hdMzXwRDtP9Qg."
+    },
+    {
+      "id": 1761316090218,
+      "login": "user",
+      "password": "$2b$10$GzavFwe75kDKgsHbjsUE3eQd86Aj5D/mM91ojAQOJ4d12HObnuKPi"
     }
   ]
 }

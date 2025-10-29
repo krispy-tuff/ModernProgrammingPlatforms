@@ -1,11 +1,11 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue';
-import AppHeader from './components/AppHeader.vue';
-import TaskFilters from './components/TaskFilters.vue';
-import TaskList from './components/TaskList.vue';
-import TaskModal from './components/TaskModal.vue';
-import LoginForm from './components/LoginForm.vue'; // Импортируем компонент входа
-import api from './api'; // Импортируем обертку API
+import { ref, computed, onMounted, onUnmounted } from "vue";
+import AppHeader from "./components/AppHeader.vue";
+import TaskFilters from "./components/TaskFilters.vue";
+import TaskList from "./components/TaskList.vue";
+import TaskModal from "./components/TaskModal.vue";
+import LoginForm from "./components/LoginForm.vue"; // Импортируем компонент входа
+import api from "./api"; // Импортируем обертку API
 
 // --- Auth State ---
 const isAuthenticated = ref(false);
@@ -16,29 +16,30 @@ const showTaskModal = ref(false);
 const currentEditingTask = ref(null);
 
 // --- Filters state ---
-const searchQuery = ref('');
-const statusFilter = ref('all');
-const sortBy = ref('createdAt_desc');
+const searchQuery = ref("");
+const statusFilter = ref("all");
+const sortBy = ref("createdAt_desc");
 
 // Computed property for filtered and sorted tasks
 const filteredAndSortedTasks = computed(() => {
   let result = [...tasks.value];
-  if (statusFilter.value !== 'all') {
-    result = result.filter(task => task.status === statusFilter.value);
+  if (statusFilter.value !== "all") {
+    result = result.filter((task) => task.status === statusFilter.value);
   }
   if (searchQuery.value) {
     const query = searchQuery.value.toLowerCase();
-    result = result.filter(task =>
-      task.title.toLowerCase().includes(query) ||
-      (task.description && task.description.toLowerCase().includes(query))
+    result = result.filter(
+      (task) =>
+        task.title.toLowerCase().includes(query) ||
+        (task.description && task.description.toLowerCase().includes(query))
     );
   }
   result.sort((a, b) => {
-    const [key, order] = sortBy.value.split('_');
-    const valA = a[key] || '';
-    const valB = b[key] || '';
-    if (valA < valB) return order === 'asc' ? -1 : 1;
-    if (valA > valB) return order === 'asc' ? 1 : -1;
+    const [key, order] = sortBy.value.split("_");
+    const valA = a[key] || "";
+    const valB = b[key] || "";
+    if (valA < valB) return order === "asc" ? -1 : 1;
+    if (valA > valB) return order === "asc" ? 1 : -1;
     return 0;
   });
   return result;
@@ -48,14 +49,14 @@ const filteredAndSortedTasks = computed(() => {
 
 async function fetchTasks() {
   try {
-    const response = await api.fetch('/api/tasks');
-    if (!response.ok) throw new Error('Failed to fetch');
+    const response = await fetch("/api/tasks", { credentials: "include" });
+    if (!response.ok) throw new Error("Failed to fetch");
     const data = await response.json();
-    tasks.value = data.map(task => ({ ...task, expanded: false }));
+    tasks.value = data.map((task) => ({ ...task, expanded: false }));
     isAuthenticated.value = true; // Если задачи загрузились, пользователь аутентифицирован
   } catch (error) {
-    console.error('Ошибка при загрузке задач:', error);
-    if (error.message === 'Unauthorized') {
+    console.error("Ошибка при загрузке задач:", error);
+    if (error.message === "Unauthorized") {
       isAuthenticated.value = false;
     }
   }
@@ -63,21 +64,25 @@ async function fetchTasks() {
 
 async function handleAddTask({ task, files }) {
   const formData = new FormData();
-  formData.append('title', task.title);
-  formData.append('description', task.description);
-  formData.append('dueDate', task.dueDate);
-  formData.append('status', task.status);
-  files.forEach(file => {
-    formData.append('attachments', file);
+  formData.append("title", task.title);
+  formData.append("description", task.description);
+  formData.append("dueDate", task.dueDate);
+  formData.append("status", task.status);
+  files.forEach((file) => {
+    formData.append("attachments", file);
   });
 
   try {
-    const response = await api.fetch('/api/tasks', { method: 'POST', body: formData });
+    const response = await api.fetch("/api/tasks", {
+      method: "POST",
+      body: formData,
+      credentials: "include",
+    });
     const newlyCreatedTask = await response.json();
     tasks.value.push({ ...newlyCreatedTask, expanded: false });
     closeModal();
   } catch (error) {
-    console.error('Ошибка при добавлении задачи:', error);
+    console.error("Ошибка при добавлении задачи:", error);
   }
 }
 
@@ -86,13 +91,17 @@ async function handleUpdateTask({ task, files, attachmentsToDelete }) {
   if (attachmentsToDelete && attachmentsToDelete.length > 0) {
     for (const attachmentId of attachmentsToDelete) {
       try {
-        await api.fetch(`/api/attachments/${attachmentId}`, { method: 'DELETE' });
-        const taskInState = tasks.value.find(t => t.id === task.id);
+        await api.fetch(`/api/attachments/${attachmentId}`, {
+          method: "DELETE",
+        });
+        const taskInState = tasks.value.find((t) => t.id === task.id);
         if (taskInState) {
-          taskInState.attachments = taskInState.attachments.filter(a => a.id !== attachmentId);
+          taskInState.attachments = taskInState.attachments.filter(
+            (a) => a.id !== attachmentId
+          );
         }
       } catch (error) {
-        console.error('Ошибка при удалении вложения:', error);
+        console.error("Ошибка при удалении вложения:", error);
       }
     }
   }
@@ -100,37 +109,40 @@ async function handleUpdateTask({ task, files, attachmentsToDelete }) {
   // 2. Update text data
   try {
     const response = await api.fetch(`/api/tasks/${task.id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(task)
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(task),
     });
     const updatedTask = await response.json();
-    const index = tasks.value.findIndex(t => t.id === updatedTask.id);
+    const index = tasks.value.findIndex((t) => t.id === updatedTask.id);
     if (index !== -1) {
       updatedTask.attachments = tasks.value[index].attachments;
       updatedTask.expanded = tasks.value[index].expanded;
       tasks.value[index] = updatedTask;
     }
   } catch (error) {
-    console.error('Ошибка при обновлении задачи:', error);
+    console.error("Ошибка при обновлении задачи:", error);
   }
 
   // 3. Upload new files if any
   if (files.length > 0) {
     const fileData = new FormData();
-    files.forEach(file => {
-      fileData.append('attachments', file);
+    files.forEach((file) => {
+      fileData.append("attachments", file);
     });
     try {
-      const response = await api.fetch(`/api/tasks/${task.id}/attachments`, { method: 'POST', body: fileData });
+      const response = await api.fetch(`/api/tasks/${task.id}/attachments`, {
+        method: "POST",
+        body: fileData,
+      });
       const newAttachments = await response.json();
-      const taskInList = tasks.value.find(t => t.id === task.id);
+      const taskInList = tasks.value.find((t) => t.id === task.id);
       if (taskInList) {
         if (!taskInList.attachments) taskInList.attachments = [];
         taskInList.attachments.push(...newAttachments);
       }
     } catch (error) {
-      console.error('Ошибка при добавлении файлов:', error);
+      console.error("Ошибка при добавлении файлов:", error);
     }
   }
   closeModal();
@@ -139,26 +151,26 @@ async function handleUpdateTask({ task, files, attachmentsToDelete }) {
 async function handleUpdateStatus(updatedTask) {
   try {
     await api.fetch(`/api/tasks/${updatedTask.id}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ status: updatedTask.status })
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ status: updatedTask.status }),
     });
-    const index = tasks.value.findIndex(t => t.id === updatedTask.id);
+    const index = tasks.value.findIndex((t) => t.id === updatedTask.id);
     if (index !== -1) {
       tasks.value[index].status = updatedTask.status;
     }
   } catch (error) {
-    console.error('Ошибка при обновлении статуса:', error);
+    console.error("Ошибка при обновлении статуса:", error);
   }
 }
 
 async function handleDeleteTask(taskId) {
-  if (!confirm('Вы уверены, что хотите удалить эту задачу?')) return;
+  if (!confirm("Вы уверены, что хотите удалить эту задачу?")) return;
   try {
-    await api.fetch(`/api/tasks/${taskId}`, { method: 'DELETE' });
-    tasks.value = tasks.value.filter(t => t.id !== taskId);
+    await api.fetch(`/api/tasks/${taskId}`, { method: "DELETE" });
+    tasks.value = tasks.value.filter((t) => t.id !== taskId);
   } catch (error) {
-    console.error('Ошибка при удалении задачи:', error);
+    console.error("Ошибка при удалении задачи:", error);
   }
 }
 
@@ -179,9 +191,9 @@ function closeModal() {
 
 async function handleLogout() {
   try {
-    await api.fetch('/api/auth/logout', { method: 'POST' });
+    await api.fetch("/api/auth/logout", { method: "POST" });
   } catch (error) {
-    console.error('Ошибка при выходе:', error);
+    console.error("Ошибка при выходе:", error);
   } finally {
     isAuthenticated.value = false;
     tasks.value = [];
@@ -201,14 +213,13 @@ function handleUnauthorized() {
 
 // --- Lifecycle ---
 onMounted(() => {
-  window.addEventListener('unauthorized', handleUnauthorized);
+  window.addEventListener("unauthorized", handleUnauthorized);
   fetchTasks(); // Пробуем загрузить задачи при старте
 });
 
 onUnmounted(() => {
-  window.removeEventListener('unauthorized', handleUnauthorized);
+  window.removeEventListener("unauthorized", handleUnauthorized);
 });
-
 </script>
 
 <template>
