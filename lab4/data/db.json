@@ -1,0 +1,138 @@
+{
+  "tasks": [
+    {
+      "id": "mhb7nkqwu7dyjmiq1m",
+      "userId": "1761316090218",
+      "title": "test3",
+      "description": "three",
+      "status": "cancelled",
+      "dueDate": "2025-10-03",
+      "createdAt": "2025-10-28T23:41:35.048Z",
+      "updatedAt": "2025-10-28T23:57:22.859Z",
+      "attachments": [
+        {
+          "id": "mhb87w2zr429pkdgtp",
+          "filename": "1761695842845-130734286.docx",
+          "originalName": "ОтчётПОВС2.docx",
+          "path": "/uploads/1761695842845-130734286.docx",
+          "uploadedAt": "2025-10-28T23:57:22.859Z"
+        }
+      ]
+    },
+    {
+      "id": "mhb83qhzr3s6v69wkb9",
+      "userId": "1761316090218",
+      "title": "test2",
+      "description": "two",
+      "status": "pending",
+      "dueDate": "2025-10-02",
+      "createdAt": "2025-10-28T23:54:08.999Z",
+      "updatedAt": "2025-10-28T23:57:03.676Z",
+      "attachments": [
+        {
+          "id": "mhb87ha4pddqmtxto",
+          "filename": "1761695823672-71849977.vue",
+          "originalName": "App.vue",
+          "path": "/uploads/1761695823672-71849977.vue",
+          "uploadedAt": "2025-10-28T23:57:03.676Z"
+        },
+        {
+          "id": "mhb87ha48c1xjn4u77h",
+          "filename": "1761695823672-192903341.js",
+          "originalName": "main.js",
+          "path": "/uploads/1761695823672-192903341.js",
+          "uploadedAt": "2025-10-28T23:57:03.676Z"
+        }
+      ]
+    },
+    {
+      "id": "mhb848frx3ivmm0nwt",
+      "userId": "1761269415942",
+      "title": "test1",
+      "description": "one",
+      "status": "in_progress",
+      "dueDate": "2025-10-03",
+      "createdAt": "2025-10-28T23:54:32.247Z",
+      "updatedAt": "2025-10-28T23:56:41.300Z",
+      "attachments": [
+        {
+          "id": "mhb8700kz40runh3x9",
+          "filename": "1761695801292-989334859.py",
+          "originalName": "lab2.py",
+          "path": "/uploads/1761695801292-989334859.py",
+          "uploadedAt": "2025-10-28T23:56:41.300Z"
+        },
+        {
+          "id": "mhb8700kmovgrzzarlc",
+          "filename": "1761695801293-995639372.py",
+          "originalName": "lab3.py",
+          "path": "/uploads/1761695801293-995639372.py",
+          "uploadedAt": "2025-10-28T23:56:41.300Z"
+        }
+      ]
+    },
+    {
+      "id": "mhb8dalxfgeor32vkd6",
+      "userId": 1761316090218,
+      "title": "4",
+      "description": "four",
+      "status": "completed",
+      "dueDate": "2025-10-02",
+      "createdAt": "2025-10-29T00:01:34.965Z",
+      "updatedAt": "2025-10-29T00:01:34.965Z",
+      "attachments": [
+        {
+          "id": "mhb8dalxzk24fjd99zs",
+          "filename": "1761696094957-231941604.xlsx",
+          "originalName": "nets.xlsx",
+          "path": "/uploads/1761696094957-231941604.xlsx",
+          "uploadedAt": "2025-10-29T00:01:34.965Z"
+        }
+      ]
+    },
+    {
+      "id": "mhvinsq5ikvqb6c3wum",
+      "userId": "1761316090218",
+      "title": "5",
+      "description": "fivee",
+      "status": "cancelled",
+      "dueDate": "2025-11-14",
+      "createdAt": "2025-11-12T04:45:04.685Z",
+      "updatedAt": "2025-11-12T04:47:05.349Z",
+      "attachments": [
+        {
+          "id": "mhviqdtxxplh1n",
+          "taskId": "mhvinsq5ikvqb6c3wum",
+          "filename": "1762922825346-667489448.xlsx",
+          "originalName": "ЛР1_В12_Кремез.xlsx",
+          "path": "/uploads/1762922825346-667489448.xlsx",
+          "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "uploadedAt": "2025-11-12T04:47:05.349Z"
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": 1761269415942,
+      "login": "krispy",
+      "password": "$2b$10$7eXdKeSaAigzSI5RDBbU8.vF8g511w6LWAWKbg/hdMzXwRDtP9Qg."
+    },
+    {
+      "id": 1761316090218,
+      "login": "user",
+      "password": "$2b$10$GzavFwe75kDKgsHbjsUE3eQd86Aj5D/mM91ojAQOJ4d12HObnuKPi"
+    }
+  ],
+  "attachments": [
+    {
+      "id": "mhviqdtxxplh1n",
+      "taskId": "mhvinsq5ikvqb6c3wum",
+      "filename": "1762922825346-667489448.xlsx",
+      "originalName": "ЛР1_В12_Кремез.xlsx",
+      "path": "/uploads/1762922825346-667489448.xlsx",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "uploadedAt": "2025-11-12T04:47:05.349Z"
+    }
+  ]
+}
