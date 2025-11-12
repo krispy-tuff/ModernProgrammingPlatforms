@@ -19,7 +19,7 @@ const writeData = (data) => {
 router.post("/register", async (req, res) => {
   const { login, password } = req.body;
 
-  if (!login || !password) {
+  if (!login || !password || password.length < 5) {
     return res.status(400).json({ message: "Логин и пароль обязательны" });
   }
 
