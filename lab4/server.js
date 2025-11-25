@@ -32,6 +32,8 @@ const io = new Server(httpServer, {
   },
 });
 
+app.set("io", io);
+
 const PORT = process.env.PORT || 3002;
 
 // Настройка CORS для Express
@@ -246,7 +248,7 @@ io.on("connection", (socket) => {
   });
 });
 
-// Маршруты API (остаются только для аутентификации)
+// Маршруты API
 app.use("/api/auth", authRouter);
 app.use("/api", authMiddleware, tasksRouter); // Маршруты задач теперь через сокеты
 

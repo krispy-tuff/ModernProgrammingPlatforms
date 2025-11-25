@@ -167,6 +167,8 @@ async function handleUpdateTask({ task, files = [], attachmentsToDelete = [] }) 
       console.warn('Не дождались tasks_updated после update_task:', err)
     })
 
+    closeModal()
+
     // теперь обрабатываем вложения через REST (если есть)
     if ((files && files.length) || (attachmentsToDelete && attachmentsToDelete.length)) {
       const res = await uploadAttachmentsForTask(task.id, files, attachmentsToDelete)
@@ -181,8 +183,6 @@ async function handleUpdateTask({ task, files = [], attachmentsToDelete = [] }) 
         await waitForNextTasksUpdate(5000).catch(() => {})
       }
     }
-
-    closeModal()
   } catch (err) {
     console.error('Ошибка при обновлении задачи:', err)
     closeModal()
@@ -225,23 +225,6 @@ async function handleLogout() {
   }
 }
 
-// --- Auth Handling ---
-async function checkAuthStatus() {
-  try {
-    const res = await api.http.fetch('/api/auth/status')
-    if (res.ok) {
-      const data = await res.json()
-      if (data.isAuthenticated) {
-        isAuthenticated.value = true
-      }
-    } else {
-      isAuthenticated.value = false
-    }
-  } catch (e) {
-    isAuthenticated.value = false
-  }
-}
-
 function handleLoginSuccess() {
   isAuthenticated.value = true
   if (socket.connected) socket.disconnect()
@@ -257,7 +240,6 @@ function handleUnauthorized() {
 // --- Lifecycle & Socket Listeners ---
 onMounted(() => {
   window.addEventListener('unauthorized', handleUnauthorized)
-  checkAuthStatus()
 
   // Слушаем обновления задач от сервера
   socket.on('tasks_updated', (serverTasks) => {

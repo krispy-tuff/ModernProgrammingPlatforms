@@ -79,14 +79,16 @@
       "status": "completed",
       "dueDate": "2025-10-02",
       "createdAt": "2025-10-29T00:01:34.965Z",
-      "updatedAt": "2025-10-29T00:01:34.965Z",
+      "updatedAt": "2025-11-12T16:47:06.093Z",
       "attachments": [
         {
-          "id": "mhb8dalxzk24fjd99zs",
-          "filename": "1761696094957-231941604.xlsx",
-          "originalName": "nets.xlsx",
-          "path": "/uploads/1761696094957-231941604.xlsx",
-          "uploadedAt": "2025-10-29T00:01:34.965Z"
+          "id": "mhw8gbql6dhj9m",
+          "taskId": "mhb8dalxfgeor32vkd6",
+          "filename": "1762966025919-259492490.mp3",
+          "originalName": "03. Cigarettes.mp3",
+          "path": "/uploads/1762966025919-259492490.mp3",
+          "contentType": "audio/mpeg",
+          "uploadedAt": "2025-11-12T16:47:06.093Z"
         }
       ]
     },
@@ -98,16 +100,25 @@
       "status": "cancelled",
       "dueDate": "2025-11-14",
       "createdAt": "2025-11-12T04:45:04.685Z",
-      "updatedAt": "2025-11-12T04:47:05.349Z",
+      "updatedAt": "2025-11-12T16:39:41.221Z",
       "attachments": [
         {
-          "id": "mhviqdtxxplh1n",
+          "id": "mhw6t2hupwbwwn",
           "taskId": "mhvinsq5ikvqb6c3wum",
-          "filename": "1762922825346-667489448.xlsx",
+          "filename": "1762963261397-402747473.docx",
+          "originalName": "ЛР2_В12_Кремез.docx",
+          "path": "/uploads/1762963261397-402747473.docx",
+          "contentType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "uploadedAt": "2025-11-12T16:01:01.410Z"
+        },
+        {
+          "id": "mhw86sh161kod5",
+          "taskId": "mhvinsq5ikvqb6c3wum",
+          "filename": "1762965581213-101649830.xlsx",
           "originalName": "ЛР1_В12_Кремез.xlsx",
-          "path": "/uploads/1762922825346-667489448.xlsx",
+          "path": "/uploads/1762965581213-101649830.xlsx",
           "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-          "uploadedAt": "2025-11-12T04:47:05.349Z"
+          "uploadedAt": "2025-11-12T16:39:41.221Z"
         }
       ]
     }
@@ -126,13 +137,49 @@
   ],
   "attachments": [
     {
-      "id": "mhviqdtxxplh1n",
+      "id": "mhw6t2hupwbwwn",
       "taskId": "mhvinsq5ikvqb6c3wum",
-      "filename": "1762922825346-667489448.xlsx",
+      "filename": "1762963261397-402747473.docx",
+      "originalName": "ЛР2_В12_Кремез.docx",
+      "path": "/uploads/1762963261397-402747473.docx",
+      "contentType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "uploadedAt": "2025-11-12T16:01:01.410Z"
+    },
+    {
+      "id": "mhw86sh161kod5",
+      "taskId": "mhvinsq5ikvqb6c3wum",
+      "filename": "1762965581213-101649830.xlsx",
       "originalName": "ЛР1_В12_Кремез.xlsx",
-      "path": "/uploads/1762922825346-667489448.xlsx",
+      "path": "/uploads/1762965581213-101649830.xlsx",
       "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "uploadedAt": "2025-11-12T04:47:05.349Z"
+      "uploadedAt": "2025-11-12T16:39:41.221Z"
+    },
+    {
+      "id": "mhw8gbql6dhj9m",
+      "taskId": "mhb8dalxfgeor32vkd6",
+      "filename": "1762966025919-259492490.mp3",
+      "originalName": "03. Cigarettes.mp3",
+      "path": "/uploads/1762966025919-259492490.mp3",
+      "contentType": "audio/mpeg",
+      "uploadedAt": "2025-11-12T16:47:06.093Z"
+    },
+    {
+      "id": "mhw8jalyloi7f7",
+      "taskId": "mhw8jagr9dybyw55278",
+      "filename": "1762966164466-453160559.mp3",
+      "originalName": "09. Doom.mp3",
+      "path": "/uploads/1762966164466-453160559.mp3",
+      "contentType": "audio/mpeg",
+      "uploadedAt": "2025-11-12T16:49:24.598Z"
+    },
+    {
+      "id": "mhw9cgagbh2u0n",
+      "taskId": "mhw9cg4tsw1p3dx2s2i",
+      "filename": "1762967524814-590707153.mp3",
+      "originalName": "08. Rockstar In His Prime.mp3",
+      "path": "/uploads/1762967524814-590707153.mp3",
+      "contentType": "audio/mpeg",
+      "uploadedAt": "2025-11-12T17:12:04.984Z"
     }
   ]
 }
